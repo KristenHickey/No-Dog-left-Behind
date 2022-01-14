@@ -1,75 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import APIservice from '../APIservice';
 import { useState, useEffect } from 'react';
 import './dogs.css'
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
+import DogCard from './DogCard';
+import { Dog, Adopter } from '../interfaces';
 import "swiper/css";
 import "swiper/css/effect-creative"
-
-import SwiperCore, {
-  EffectCreative
-} from 'swiper';
-
-// install Swiper modules
-SwiperCore.use([EffectCreative]);
-
-
-interface Dog {
-  name: string,
-  imgs: string[]
-  age: number
-}
+import Banner from '../Decorational/Banner';
+import { UserContext } from '../Context/UserProvider'
 
 function Preview() {
+  const { userId } = useContext(UserContext);
   const [allDogs, setallDogs] = useState<Dog[]>([]);
+  const [adopter, setAdopter] = useState<Adopter | null>(null);
+
+  const filterMatches = (user: Adopter, allDogs: Dog[]) => {
+    const matches = allDogs.filter(dog => {
+      if (dog.gender == user.genderPref)
+        return dog
+    })
+    return matches
+  };
 
   useEffect(() => {
     APIservice.getAllDogs()
       .then(data => setallDogs(data))
   }, [])
-  console.log(allDogs[0])
+
+  useEffect(() => {
+    if (userId) APIservice.getAdopter(userId)
+      .then(data => setAdopter(data))
+  }, [userId])
 
   return (
     <div>
-      {allDogs.length > 0 ?
-        <Swiper loop={true} grabCursor={true} effect={'creative'} creativeEffect={{
-          "prev": {
-            "shadow": false,
-            "translate": [
-              0,
-              0,
-              -400
-            ]
-          },
-          "next": {
-            "translate": [
-              "100%",
-              0,
-              0
-            ]
-          }
-        }} className="mySwiper">
-          {allDogs.map((dog: Dog) => {
-            return (
-              <SwiperSlide onClick={() => console.log("test")}>
-                <figure className="img_container"><img src={dog.imgs[0]} />
-                  <figcaption>
-                    <span>{dog.name}</span>
-                    <span>{dog.age} years</span>
-                  </figcaption>
-                </figure>
-              </SwiperSlide>
-            )
-          })}
-        </Swiper>
-        : <h1>hello</h1>
+      <Banner />
+      {allDogs.length > 0 && adopter ?
+        < DogCard dogs={filterMatches(adopter, allDogs)} />
+        : <h1>Fetching matches</h1>
       }
-
     </div>
   )
-
 }
 
 export default Preview;

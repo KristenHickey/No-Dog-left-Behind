@@ -3,14 +3,18 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AdopterForm from './forms/AdopterForm';
 import Preview from './Dogs/Preview'
+import UserProvider from './Context/UserProvider';
+
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AdopterForm />} />
-        <Route path="/dogs" element={<Preview />} />
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route path="/" element={<AdopterForm />} />
+          <Route path="/dogs" element={<Preview />} />
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   )
 }

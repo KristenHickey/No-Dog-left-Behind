@@ -10,6 +10,7 @@ router.get('/dogs', dogControllers.getAll)
 
 //adopters
 router.post('/createAdopter', adopterControllers.create)
+router.get('/adopterinfo/:id', adopterControllers.getAdopterInfo)
 
 //orgs
 

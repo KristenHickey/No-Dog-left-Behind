@@ -1,9 +1,6 @@
 import React from 'react';
 import './Forms.css';
-import Banner from '../Decorational/Banner';
-import { Link } from "react-router-dom"
 import { Form, Input } from 'antd';
-import { breeds } from '../dogBreeds';
 import 'antd/dist/antd.css';
 
 function Profile() {
@@ -26,7 +23,6 @@ function Profile() {
         <Input.Password placeholder="Password"></Input.Password>
       </Form.Item>
     </div>
-
   )
 }
 

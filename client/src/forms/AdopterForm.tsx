@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom'
 import './Forms.css';
 import Banner from '../Decorational/Banner';
-import { Link } from "react-router-dom"
-import { Form, Radio, Select, Button } from 'antd';
-import { breeds } from '../dogBreeds';
+import { Form, Button } from 'antd';
 import 'antd/dist/antd.css';
 import Profile from './Profile';
 import Preferences from './Preferences';
 import APIservice from '../APIservice';
+import { UserContext } from '../Context/UserProvider'
 
-let adopterID;
-
-const breedOptions: JSX.Element[] = [];
-for (let i = 0; i < breeds.length; i++) {
-  breedOptions.push(<Select.Option key={breeds[i]}>{breeds[i]}</Select.Option>);
-}
-const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
-  APIservice.post('createAdopter', e)
-    .then(data => adopterID = data.id)
-}
 
 function AdopterForm() {
+  const { login } = useContext(UserContext)
+  const navigate = useNavigate();
+
+  const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
+    APIservice.post('createAdopter', e)
+      .then(data => login(data.id))
+    navigate('/dogs')
+  }
 
   return (
     <div >
@@ -29,7 +27,6 @@ function AdopterForm() {
         <Form onFinish={onFinish}>
           <Profile />
           <Preferences />
-
           <Button type="primary" htmlType="submit">Submit</Button>
         </Form>
       </div>

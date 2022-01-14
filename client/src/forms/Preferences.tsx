@@ -4,19 +4,21 @@ import { Form, Radio, Select } from 'antd';
 import { breeds } from '../dogBreeds';
 import 'antd/dist/antd.css';
 
-const breedOptions: JSX.Element[] = [];
-for (let i = 0; i < breeds.length; i++) {
-  breedOptions.push(<Select.Option key={breeds[i]}>{breeds[i]}</Select.Option>);
-}
+
 
 function Preferences() {
+
+  const breedOptions: JSX.Element[] = [];
+  for (let i = 0; i < breeds.length; i++) {
+    breedOptions.push(<Select.Option key={breeds[i]}>{breeds[i]}</Select.Option>);
+  }
 
   return (
     <div >
       <Form.Item label="Gender preference" name="genderPref" >
         <Radio.Group >
           <Radio.Button value="none">I dont Mind!</Radio.Button>
-          <Radio.Button value="female">Female</Radio.Button>
+          <Radio.Button value="Female">Female</Radio.Button>
           <Radio.Button value="male">Male</Radio.Button>
         </Radio.Group>
       </Form.Item>
