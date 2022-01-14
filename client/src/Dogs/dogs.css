@@ -1,0 +1,41 @@
+.img_container{
+width: 80vw;
+height: auto;
+display: flex;
+flex-flow: column nowrap;
+position: relative;
+}
+
+img{
+width: 100%;
+overflow:hidden;
+}
+
+figcaption{
+  background-color: rgb(62, 62, 62);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  opacity: 0.65;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.swiper {
+  margin: 100px auto;
+  width: 320px;
+  height: 240px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}

@@ -1,0 +1,12 @@
+#banner{
+  background-color: #FBA642 ;
+  color: white;
+  font-size:x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
