@@ -37,6 +37,7 @@ export const breeds = [
   "King Charles Spaniel",
   "Labrador Retriever",
   "Maltese",
+  "Mixed",
   "Pomeranian",
   "Poodle",
   "Portuguese Water Dog",

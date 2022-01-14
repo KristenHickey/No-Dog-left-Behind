@@ -15,6 +15,7 @@ function AdopterForm() {
   const navigate = useNavigate();
 
   const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
+    console.log(`e`, e)
     APIservice.post('createAdopter', e)
       .then(data => login(data.id))
     navigate('/dogs')

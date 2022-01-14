@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const adopterSchema = new mongoose.Schema({
+  //look for enum
   genderPref: {
     type: String,
     required: true
@@ -22,15 +23,15 @@ const adopterSchema = new mongoose.Schema({
     required: true
   },
   dogs: {
-    type: String,
+    type: Boolean,
     required: true
   },
   cats: {
-    type: String,
+    type: Boolean,
     required: true
   },
   smallAnimals: {
-    type: String,
+    type: Boolean,
     required: true
   },
   children: {
@@ -42,11 +43,11 @@ const adopterSchema = new mongoose.Schema({
     required: true
   },
   specialNeeds: {
-    type: String,
+    type: Boolean,
     required: true
   },
   maxAlone: {
-    type: String,
+    type: Number,
     required: true
   },
   firstName: {

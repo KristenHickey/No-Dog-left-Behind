@@ -1,6 +1,6 @@
 import React from 'react';
 import './Forms.css';
-import { Form, Radio, Select } from 'antd';
+import { Form, Radio, Select, Slider } from 'antd';
 import { breeds } from '../dogBreeds';
 import 'antd/dist/antd.css';
 
@@ -69,22 +69,22 @@ function Preferences() {
 
       <Form.Item label="Are there any other dogs in the household" name="dogs">
         <Radio.Group  >
-          <Radio.Button value="true">Yes</Radio.Button>
-          <Radio.Button value="false">No</Radio.Button>
+          <Radio.Button value={true}>Yes</Radio.Button>
+          <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item label="Are there any cats in the household" name="cats" >
         <Radio.Group >
-          <Radio.Button value="true">Yes</Radio.Button>
-          <Radio.Button value="false">No</Radio.Button>
+          <Radio.Button value={true}>Yes</Radio.Button>
+          <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item label="Are there any small animals in the household" name="smallAnimals">
         <Radio.Group  >
-          <Radio.Button value="true">Yes</Radio.Button>
-          <Radio.Button value="false">No</Radio.Button>
+          <Radio.Button value={true}>Yes</Radio.Button>
+          <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
@@ -107,17 +107,13 @@ function Preferences() {
       <Form.Item label="Willing to accomodate special needs e.g. behavioural or
 medical?" name="specialNeeds">
         <Radio.Group  >
-          <Radio.Button value="true">Yes</Radio.Button>
-          <Radio.Button value="false">No</Radio.Button>
+          <Radio.Button value={true}>Yes</Radio.Button>
+          <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item label="On an average day how long will the dog be left alone?" name="maxAlone">
-        <Radio.Group  >
-          <Radio.Button value="0-4">0-4 hours</Radio.Button>
-          <Radio.Button value="5-8">5-8 hours</Radio.Button>
-          <Radio.Button value="8+">8+ hours</Radio.Button>
-        </Radio.Group>
+        <Slider max={8} />
       </Form.Item>
     </div >
   )

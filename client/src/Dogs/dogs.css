@@ -26,7 +26,7 @@ figcaption{
 }
 
 .swiper {
-  margin: 100px auto;
+  margin: 50px auto;
   width: 320px;
   height: 240px;
 }
@@ -38,4 +38,10 @@ figcaption{
   font-size: 22px;
   font-weight: bold;
   color: #fff;
+}
+
+h3{
+  color: black;
+  margin-top: 12vh;
+  text-align: center;
 }
