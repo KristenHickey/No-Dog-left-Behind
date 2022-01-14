@@ -21,4 +21,6 @@ const getAllDogs = () => {
   return fetchRequest('dogs')
 }
 
+//test
+
 export default { post, getAllDogs };
