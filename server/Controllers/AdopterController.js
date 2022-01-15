@@ -14,7 +14,6 @@ async function create(req, res) {
 }
 
 async function getAdopterInfo(req, res) {
-
   try {
     const { id } = req.params;
     const user = await adopter.findOne({ _id: id })
@@ -26,4 +25,18 @@ async function getAdopterInfo(req, res) {
   }
 }
 
-module.exports = { create, getAdopterInfo }
+async function updateAdopterDetails(req, res) {
+  try {
+    const { id } = req.params;
+    const user = await adopter.findOneAndUpdate({ _id: id },
+      req.body,
+      { new: true }
+    )
+    res.status(200)
+    res.send(user)
+  } catch (error) {
+
+  }
+}
+
+module.exports = { create, getAdopterInfo, updateAdopterDetails }

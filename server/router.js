@@ -12,7 +12,7 @@ router.get('/dog/:id', dogControllers.getOneDog)
 //adopters
 router.post('/createAdopter', adopterControllers.create)
 router.get('/adopterinfo/:id', adopterControllers.getAdopterInfo)
-
+router.put('/updateAdopterDetails/:id', adopterControllers.updateAdopterDetails)
 //orgs
 
 

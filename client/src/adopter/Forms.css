@@ -1,0 +1,16 @@
+
+.formContainer{
+  height: 100vh;
+  padding: 0vw 4vw;
+}
+
+button{
+  background-color: #FBA642;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  border-radius: 5px;
+  padding: 10px ;
+  min-width: 33vw;
+}
+

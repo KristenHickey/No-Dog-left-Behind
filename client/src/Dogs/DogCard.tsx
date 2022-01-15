@@ -18,8 +18,9 @@ const DogCard: React.FC<DogCardProps> = ({ dogs }) => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h3>You have {dogs.length} matches!</h3>
+    <div className="pageContainer">
+      <h3>You have {dogs.length} matches, swipe to see them!</h3>
+
       <Swiper loop={dogs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
         "prev": {
           "shadow": false,
@@ -33,7 +34,7 @@ const DogCard: React.FC<DogCardProps> = ({ dogs }) => {
           return (
             <SwiperSlide key={dog._id} onClick={() => navigate(`/dog/${dog._id}`)}>
               <figure className="img_container"><img src={dog.imgs[0]} />
-                <figcaption>
+                <figcaption className="cardfigcaption">
                   <span>{dog.name}</span>
                   <span>{dog.age} years</span>
                 </figcaption>
@@ -42,6 +43,7 @@ const DogCard: React.FC<DogCardProps> = ({ dogs }) => {
           )
         })}
       </Swiper>
+
     </div>
   )
 }

@@ -11,7 +11,7 @@ width: 100%;
 overflow:hidden;
 }
 
-figcaption{
+.cardfigcaption{
   background-color: rgb(62, 62, 62);
   color: white;
   display: flex;
@@ -25,10 +25,11 @@ figcaption{
   font-size: large;
 }
 
-.swiper {
-  margin: 50px auto;
+.mySwiper {
+  margin: 0px;
   width: 320px;
   height: 240px;
+
 }
 
 .swiper-slide {
@@ -40,8 +41,64 @@ figcaption{
   color: #fff;
 }
 
-h3{
-  color: black;
+h3 {
   margin-top: 12vh;
+  margin-bottom: 10vh;
   text-align: center;
+}
+
+.dogDetailsContainer{
+  padding: 0vw 4vw;
+}
+
+.dogDetails{
+  color: #FBA642;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+button{
+  background-color: #FBA642;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  border-radius: 5px;
+  padding: 10px ;
+  min-width: 33vw;
+}
+
+.buttonDivProfile{
+padding: 1vh 4vw;
+display: flex;
+width: 100%;
+justify-content: center;
+}
+
+.buttonDivPreview{
+  margin-top: 10vh;
+  padding: 1vh 4vw;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pageContainer{
+  margin-top: 10vh;
+}
+
+.swipePics{
+  text-align: center;
+}
+
+.profileFigCap{
+  background-color: rgb(62, 62, 62);
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+  position: absolute;
+  bottom: 0%;
+  opacity: 0.65;
+  font-weight: bolder;
+  font-size: large;
 }

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import APIservice from '../APIservice';
 import { Dog } from '../interfaces';
-import "swiper/css";
-import "swiper/css/effect-creative"
+import "swiper/less";
+import "swiper/less/effect-creative"
 import SwiperCore, { EffectCreative } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
+import Banner from '../Decorational/Banner';
 
 SwiperCore.use([EffectCreative]);
 
@@ -24,9 +25,10 @@ const DogProfile: React.FC = () => {
   }, [id])
 
   return (
-    <div>
+    <div >
       {dog ?
-        <div>
+        <div className="pageContainer">
+          <Banner />
           <Swiper loop={dog.imgs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
             "prev": {
               "shadow": false,
@@ -41,24 +43,30 @@ const DogProfile: React.FC = () => {
                 <SwiperSlide key={img} >
                   <figure className="img_container">
                     <img src={img} />
+                    <figcaption className="profileFigCap">
+                      <span>{dog.imgs.indexOf(img) + 1}/{dog.imgs.length}</span>
+                    </figcaption>
                   </figure>
                 </SwiperSlide>
               )
             })}
           </Swiper>
           <div className="dogDetailsContainer">
-            <h3>Hi! My name is <span className="dogDetails">{dog.name}</span></h3>
-            <h3>I am <span className="dogDetails">{dog.age}</span> years old</h3>
-            <h3>I am a <span className="dogDetails">{dog.gender}</span></h3>
-            <h3>My breed is <span className="dogDetails">{dog.breed}</span> and I am a <span className="dogDetails">{dog.size}</span> sized dog</h3>
-            {dog.outdoorSpace === "none" ? <h3> I do not need a private outdoor space</h3> : <h3>I will need a <span className="dogDetails">{dog.outdoorSpace}</span> sized private outdoor space</h3>}
-            {dog.onlyDog === true ? <h3> I will need to be the only dog in the household</h3> : <h3>I am excited to have doggy siblings!</h3>}
-            <h3>I <span className="dogDetails">{dog.cats ? "can" : "cannot"}</span> live with cats</h3>
-            <h3>I <span className="dogDetails">{dog.smallAnimals ? "can" : "cannot"}</span> live with small animals</h3>
-            {dog.children === "12+" ? <h3> I can live with children over the age of 12 years</h3> : <h3>I <span className="dogDetails">{dog.children === "true" ? "can" : "cannot"}</span> live with children of any age</h3>}
-            {dog.exercise === "none" ? <h3> I don't need to be exercised and am happy to just chill at home</h3> : <h3>I will need to be exercised <span className="dogDetails">{dog.exercise}</span></h3>}
-            {dog.specialNeeds === "false" ? <h3> I don't have any special needs</h3> : <h3>I have some special needs that include<span className="dogDetails">{dog.specialNeeds}</span></h3>}
-            {dog.maxAlone < 4 ? <h3> I will struggle being left home alone</h3> : <h3>I am happy to be home alone for up to <span className="dogDetails">{dog.maxAlone}</span> hours in a day</h3>}
+            <p>Hi! My name is <span className="dogDetails">{dog.name}</span></p>
+            <p>I am <span className="dogDetails">{dog.age}</span> years old</p>
+            <p>I am a <span className="dogDetails">{dog.gender}</span></p>
+            <p>My breed is <span className="dogDetails">{dog.breed}</span> and I am a <span className="dogDetails">{dog.size}</span> sized dog</p>
+            {dog.outdoorSpace === "none" ? <p> I <span className="dogDetails">do not need </span>a private outdoor space</p> : <p>I will need a <span className="dogDetails">{dog.outdoorSpace}</span> sized private outdoor space</p>}
+            {dog.onlyDog === true ? <p> I will need to be the <span className="dogDetails">only dog</span> in the household</p> : <p>I am <span className="dogDetails">excited to have doggy siblings!</span></p>}
+            <p>I <span className="dogDetails">{dog.cats ? "can" : "cannot"}</span> live with cats</p>
+            <p>I <span className="dogDetails">{dog.smallAnimals ? "can" : "cannot"}</span> live with small animals</p>
+            {dog.children === "12+" ? <p> I can live with children <span className="dogDetails">over the age of 12 years</span></p> : <p>I <span className="dogDetails">{dog.children === "true" ? "can" : "cannot"}</span> live with children of any age</p>}
+            {dog.exercise === "none" ? <p> I don't need to be exercised and am happy to just chill at home</p> : <p>I will need to be exercised <span className="dogDetails">{dog.exercise}</span></p>}
+            {dog.specialNeeds === "false" ? <p> I <span className="dogDetails">don't </span>have any special needs</p> : <p>I have some special needs that include <span className="dogDetails">{dog.specialNeeds}</span></p>}
+            {dog.maxAlone < 4 ? <p> I will <span className="dogDetails">struggle being left home alone</span></p> : <p>I am happy to be home alone for up to <span className="dogDetails">{dog.maxAlone} hours</span> in a day</p>}
+          </div>
+          <div className="buttonDivProfile">
+            <button>Contact my carers about me!</button>
           </div>
         </div>
         : <h2>Fetching dog info!</h2>}

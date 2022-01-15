@@ -9,7 +9,7 @@ import "swiper/css/effect-creative"
 import Banner from '../Decorational/Banner';
 import { UserContext } from '../Context/UserProvider'
 import { filterMatches } from '../helpers';
-
+import BottomMenu from '../BottomMenu';
 
 function Preview() {
   const { userId } = useContext(UserContext);
@@ -32,10 +32,17 @@ function Preview() {
   const hasDogs = allDogs.length > 0;
   console.log(allDogs)
   return (
-    <div>
+    <div className="pageContainer">
       <Banner />
       {hasDogs && adopter ?
-        < DogCard dogs={filterMatches(adopter, allDogs)} />
+        <div>
+          < DogCard dogs={filterMatches(adopter, allDogs)} />
+          <div className="buttonDivPreview">
+            <button>Add to shortlist</button>
+            <button>Remove match</button>
+          </div>
+          <BottomMenu />
+        </div>
         : <h1>Fetching matches</h1>
       }
     </div>

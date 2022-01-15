@@ -8,7 +8,7 @@ function Profile() {
   return (
     <div >
       <Form.Item name="firstName" >
-        <Input placeholder="First name"></Input>
+        <Input placeholder="First name" ></Input>
       </Form.Item>
       <Form.Item name="lastName">
         <Input placeholder="Last name"></Input>

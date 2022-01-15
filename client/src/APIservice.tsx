@@ -32,5 +32,13 @@ const getAdopter = (id: string | null): Promise<Adopter> => {
   return fetchRequest(`adopterInfo/${id}`)
 }
 
+const updateAdopterInfo = (id: string, body: object): Promise<Adopter> => {
+  return fetchRequest(`updateAdopterDetails/${id}`, {
+    method: 'PUT',
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify(body)
+  })
+}
 
-export default { post, getAllDogs, getAdopter, getOneDog };
+
+export default { post, getAllDogs, getAdopter, getOneDog, updateAdopterInfo };

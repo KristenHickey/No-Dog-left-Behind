@@ -22,7 +22,7 @@ function AdopterForm() {
   }
 
   return (
-    <div >
+    <div className="pageContainer">
       <Banner></Banner>
       <div className="formContainer">
         <Form onFinish={onFinish}>
