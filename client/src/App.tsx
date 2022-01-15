@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AdopterForm from './forms/AdopterForm';
 import Preview from './Dogs/Preview'
 import UserProvider from './Context/UserProvider';
+import DogProfile from './Dogs/DogProfile';
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <UserProvider>
         <Routes>
           <Route path="/" element={<AdopterForm />} />
-          <Route path="/dogs" element={<Preview />} />
+          <Route path="/dogs/" element={<Preview />} />
+          <Route path="/dog/:id" element={<DogProfile />} />
         </Routes>
       </UserProvider>
     </BrowserRouter>

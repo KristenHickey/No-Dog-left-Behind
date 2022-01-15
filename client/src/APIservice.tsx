@@ -21,10 +21,14 @@ const getAllDogs = () => {
   return fetchRequest('dogs')
 }
 
+const getOneDog = (id: string) => {
+  return fetchRequest(`dog/${id}`)
+}
+
 //Adopter
 const getAdopter = (id: string | null) => {
   return fetchRequest(`adopterInfo/${id}`)
 }
 
 
-export default { post, getAllDogs, getAdopter };
+export default { post, getAllDogs, getAdopter, getOneDog };

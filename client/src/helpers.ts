@@ -1,3 +1,5 @@
+import { Adopter, Dog } from "./interfaces"
+
 export const breed = (dog: string, user: string[]): boolean => {
   if (user.includes('All')) {
     return true
@@ -105,3 +107,22 @@ export const specialNeeds = (dog: string, user: boolean): boolean => {
   }
   return false
 }
+
+export const filterMatches = (user: Adopter, allDogs: Dog[]): Dog[] => {
+  const matches = allDogs.filter(dog => {
+    if (breed(dog.breed, user.breedPref) &&
+      gender(dog.gender, user.genderPref) &&
+      age(dog.age, user.agePref) &&
+      size(dog.size, user.sizePref) &&
+      exercise(dog.exercise, user.exercise) &&
+      outdoorSpace(dog.outdoorSpace, user.outdoorSpace) &&
+      cats(dog.cats, user.cats) &&
+      onlyDog(dog.onlyDog, user.dogs) &&
+      smallAnimals(dog.smallAnimals, user.smallAnimals) &&
+      maxAlone(dog.maxAlone, user.maxAlone) &&
+      specialNeeds(dog.specialNeeds, user.specialNeeds)) {
+      return dog
+    }
+  })
+  return matches
+};

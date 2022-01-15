@@ -5,6 +5,7 @@ import { Dog } from '../interfaces';
 import "swiper/css";
 import "swiper/css/effect-creative"
 import SwiperCore, { EffectCreative } from 'swiper';
+import { useNavigate } from 'react-router-dom';
 
 
 SwiperCore.use([EffectCreative]);
@@ -14,6 +15,7 @@ type DogCardProps = {
 }
 
 const DogCard: React.FC<DogCardProps> = ({ dogs }) => {
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -29,7 +31,7 @@ const DogCard: React.FC<DogCardProps> = ({ dogs }) => {
       }} className="mySwiper">
         {dogs.map((dog: Dog) => {
           return (
-            <SwiperSlide key={dog._id} onClick={() => console.log("test")}>
+            <SwiperSlide key={dog._id} onClick={() => navigate(`/dog/${dog._id}`)}>
               <figure className="img_container"><img src={dog.imgs[0]} />
                 <figcaption>
                   <span>{dog.name}</span>
