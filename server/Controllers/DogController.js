@@ -7,7 +7,20 @@ async function getAll(req, res) {
     res.send(allDogs);
   } catch (error) {
     res.status(500)
-    res.send('Cannot fetch dogs!')
+    res.send(error)
+  }
+}
+
+async function getOneDog(req, res) {
+  console.log(req.params)
+  try {
+    const { id } = req.params
+    const dog = await Dog.findById(id)
+    res.status(200)
+    res.send(dog)
+  } catch (error) {
+    res.status(500)
+    res.send(error)
   }
 }
 
@@ -16,8 +29,8 @@ async function addDog(req, res) {
 
   } catch (error) {
     res.status(500)
-    res.send('Unable to add dog!')
+    res.send(error)
   }
 }
 
-module.exports = { getAll, addDog }
+module.exports = { getAll, addDog, getOneDog }

@@ -7,6 +7,7 @@ const orgControllers = require('./Controllers/OrgController')
 
 //doggos
 router.get('/dogs', dogControllers.getAll)
+router.get('/dog/:id', dogControllers.getOneDog)
 
 //adopters
 router.post('/createAdopter', adopterControllers.create)

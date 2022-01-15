@@ -1,3 +1,5 @@
+import { Adopter, Dog } from "./interfaces"
+
 const base = 'http://localhost:3005/'
 
 const fetchRequest = (endPoint?: string, options?: object) => {
@@ -17,16 +19,16 @@ const post = (endPoint: string, body: object) => {
 }
 
 //doggos
-const getAllDogs = () => {
+const getAllDogs = (): Promise<Dog[]> => {
   return fetchRequest('dogs')
 }
 
-const getOneDog = (id: string) => {
+const getOneDog = (id: string): Promise<Dog> => {
   return fetchRequest(`dog/${id}`)
 }
 
 //Adopter
-const getAdopter = (id: string | null) => {
+const getAdopter = (id: string | null): Promise<Adopter> => {
   return fetchRequest(`adopterInfo/${id}`)
 }
 
