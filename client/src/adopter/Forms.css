@@ -2,6 +2,7 @@
 .formContainer{
   height: 100vh;
   padding: 0vw 4vw;
+  margin-top: 12vh
 }
 
 button{
@@ -12,5 +13,9 @@ button{
   border-radius: 5px;
   padding: 10px ;
   min-width: 33vw;
+}
+
+.adoptionForm{
+  margin-top: 5vh;
 }
 
