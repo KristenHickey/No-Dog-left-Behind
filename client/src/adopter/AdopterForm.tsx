@@ -23,7 +23,7 @@ function AdopterForm() {
 
   return (
     <div className="pageContainer">
-      <Banner></Banner>
+      {/* <Banner></Banner> */}
       <div className="formContainer">
         <Form onFinish={onFinish}>
           <Profile />

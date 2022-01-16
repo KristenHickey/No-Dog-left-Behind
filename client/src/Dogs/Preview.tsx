@@ -12,39 +12,43 @@ import { filterMatches } from '../helpers';
 import BottomMenu from '../BottomMenu';
 
 function Preview() {
-  const { userId } = useContext(UserContext);
+  //const { userId } = useContext(UserContext);
+  // const userId = '61e1b91b9761846886f8ec6a';
   const [allDogs, setallDogs] = useState<Dog[]>([]);
   const [adopter, setAdopter] = useState<Adopter | null>(null);
+  const [currentDog, setCurrentDog] = useState<string | null>(null)
 
 
   useEffect(() => {
     APIservice.getAllDogs()
       //always handle errors
       .then(data => setallDogs(data))
-
+    APIservice.getAdopter("61e2f1aef7d13b4900fc7857")
+      .then(data => setAdopter(data))
   }, [])
 
-  useEffect(() => {
-    if (userId) APIservice.getAdopter(userId)
-      .then(data => setAdopter(data))
-  }, [userId]);
+  // useEffect(() => {
+  //   if (userId) APIservice.getAdopter(userId)
+  //     .then(data => setAdopter(data))
+  // }, [userId]);
 
   const hasDogs = allDogs.length > 0;
   console.log(allDogs)
   return (
     <div className="pageContainer">
-      <Banner />
+      {/* <Banner /> */}
       {hasDogs && adopter ?
         <div>
-          < DogCard dogs={filterMatches(adopter, allDogs)} />
+          < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
           <div className="buttonDivPreview">
-            <button>Add to shortlist</button>
+            <button onClick={() => console.log(currentDog)}>Add to shortlist</button>
             <button>Remove match</button>
           </div>
-          <BottomMenu />
+
         </div>
         : <h1>Fetching matches</h1>
       }
+      {/* <BottomMenu /> */}
     </div>
   )
 }
