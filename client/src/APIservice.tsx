@@ -61,5 +61,21 @@ const removeFromFavourites = (userId: string, dogId: string) => {
   })
 }
 
+const dontShowInMatches = (userId: string, dogId: string) => {
+  return fetchRequest(`dontShowInMatches/${userId}`, {
+    method: 'PUT',
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify({ dogId: dogId })
+  })
+}
 
-export default { post, getAllDogs, getAdopter, getOneDog, updateAdopterInfo, getFavourtiesList, addToFavourites, removeFromFavourites };
+const login = (body: object) => {
+  return fetchRequest('login', {
+    method: 'POST',
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify(body)
+  })
+}
+
+
+export default { post, getAllDogs, getAdopter, getOneDog, updateAdopterInfo, getFavourtiesList, addToFavourites, removeFromFavourites, dontShowInMatches, login };

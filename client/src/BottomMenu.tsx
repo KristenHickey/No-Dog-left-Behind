@@ -25,7 +25,7 @@ function BottomMenu() {
           }}
         >
           <BottomNavigationAction label="Favourites" icon={<FavoriteIcon />} component={Link} to={`/favourites`} />
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to={'/dogs'} />
+          <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to={'/home'} />
           <BottomNavigationAction label="Profile" icon={<PersonIcon />} component={Link} to={`/profile/${userId}`} />
         </BottomNavigation>
       </Paper>

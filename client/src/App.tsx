@@ -10,6 +10,7 @@ import ProfilePage from './adopter/ProfilePage';
 import BottomMenu from './BottomMenu';
 import Banner from './Decorational/Banner';
 import FavouritesPage from './Dogs/FavouritesPage';
+import LoginPage from './Login/LoginPage';
 
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
       <UserProvider>
         <Banner />
         <Routes>
-          <Route path="/" element={<AdopterForm />} />
-          <Route path="/dogs/" element={<Preview />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/createAccount" element={<AdopterForm />} />
+          <Route path="/home/" element={<Preview />} />
           <Route path="/dog/:id" element={<DogProfile />} />
           <Route path="/profile/:id" element={<ProfilePage />}></Route>
           <Route path="/favourites" element={<FavouritesPage />} />

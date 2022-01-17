@@ -70,7 +70,8 @@ const adopterSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  favouritesList: Array
+  favouritesList: Array,
+  dontShow: Array
 })
 
 const adopter = mongoose.model('adopter', adopterSchema);

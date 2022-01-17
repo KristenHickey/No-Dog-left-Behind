@@ -35,7 +35,8 @@ export interface Adopter {
   phone: string,
   email: string,
   password: string,
-  favouritesList?: string[]
+  favouritesList?: string[],
+  dontShow?: string[]
 }
 
 export interface IUserContext {

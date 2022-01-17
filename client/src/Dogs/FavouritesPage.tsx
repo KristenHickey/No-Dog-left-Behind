@@ -10,6 +10,8 @@ function FavouritesPage() {
   const [allDogs, setAllDogs] = useState<Dog[]>([])
   const [favouritesList, setFavouritesList] = useState<string[]>([])
   const [currentDog, setCurrentDog] = useState<string | null>(null)
+  const hasDogs = allDogs.length > 0;
+  const hasFavouritesList = favouritesList.length > 0;
 
   useEffect(() => {
     APIservice.getAllDogs()
@@ -18,15 +20,21 @@ function FavouritesPage() {
       .then(data => setFavouritesList(data))
   }, [])
 
-  const hasDogs = allDogs.length > 0;
-  const hasFavouritesList = favouritesList.length > 0;
+  const removeFav = (userId: string, dogId: string) => {
+    if (hasFavouritesList) {
+      APIservice.removeFromFavourites(userId, dogId)
+        .then(() => { setFavouritesList(favouritesList.filter(id => id !== currentDog)) })
+
+    }
+
+  }
   return (
     <div>
       {hasDogs && hasFavouritesList ?
         <div>
           < DogCard dogs={filterFavourites(allDogs, favouritesList)} setCurrent={setCurrentDog} />
           <div className="buttonDivPreview">
-            <button onClick={() => (currentDog && userId) && APIservice.removeFromFavourites(userId, currentDog)}>Remove from your favourites</button>
+            <button onClick={() => (userId && currentDog) && removeFav(userId, currentDog)}>Remove from your favourites</button>
           </div>
 
         </div>

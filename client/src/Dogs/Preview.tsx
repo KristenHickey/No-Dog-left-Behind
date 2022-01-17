@@ -17,13 +17,24 @@ function Preview() {
   const [adopter, setAdopter] = useState<Adopter | null>(null);
   const [currentDog, setCurrentDog] = useState<string | null>(null)
 
+  const addFav = (userId: string, dogId: string): void => {
+    if (currentDog && userId) {
+      APIservice.addToFavourites(userId, currentDog)
+        .then(() => { setallDogs(allDogs.filter(dog => dog._id !== currentDog)) })
+    }
+
+  }
+  const removeMatch = (userId: string, dogId: string): void => {
+    if (currentDog && userId) {
+      APIservice.dontShowInMatches(userId, currentDog)
+        .then(() => { setallDogs(allDogs.filter(dog => dog._id !== currentDog)) })
+    }
+  }
 
   useEffect(() => {
     APIservice.getAllDogs()
       //always handle errors
       .then(data => setallDogs(data))
-    // APIservice.getAdopter("61e321408e19959701a95cd4")
-    //   .then(data => setAdopter(data))
   }, [])
 
   useEffect(() => {
@@ -40,8 +51,8 @@ function Preview() {
         <div>
           < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
           <div className="buttonDivPreview">
-            <button onClick={() => (currentDog && userId) && APIservice.addToFavourites(userId, currentDog)}>Add to shortlist</button>
-            <button>Remove match</button>
+            <button onClick={() => { (currentDog && userId) && addFav(userId, currentDog) }}>Add to shortlist</button>
+            <button onClick={() => { (currentDog && userId) && removeMatch(userId, currentDog) }}>Remove match</button>
           </div>
 
         </div>

@@ -1,3 +1,4 @@
+import APIservice from "./APIservice"
 import { Adopter, Dog } from "./interfaces"
 
 export const breed = (dog: string, user: string[]): boolean => {
@@ -108,7 +109,15 @@ export const specialNeeds = (dog: string, user: boolean): boolean => {
   return false
 }
 
+export const dontShow = (dog: string, user: string[]): boolean => {
+  if (user.includes(dog)) {
+    return false
+  }
+  return true
+}
+
 export const filterMatches = (user: Adopter, allDogs: Dog[]): Dog[] => {
+  console.log(user)
   const matches = allDogs.filter(dog => {
     if (breed(dog.breed, user.breedPref) &&
       gender(dog.gender, user.genderPref) &&
@@ -120,7 +129,8 @@ export const filterMatches = (user: Adopter, allDogs: Dog[]): Dog[] => {
       onlyDog(dog.onlyDog, user.dogs) &&
       smallAnimals(dog.smallAnimals, user.smallAnimals) &&
       maxAlone(dog.maxAlone, user.maxAlone) &&
-      specialNeeds(dog.specialNeeds, user.specialNeeds)) {
+      specialNeeds(dog.specialNeeds, user.specialNeeds) &&
+      (user.dontShow && dontShow(dog._id, user.dontShow))) {
       return dog
     }
   })
@@ -135,3 +145,4 @@ export const filterFavourites = (dogs: Dog[], favouritesList: string[]): Dog[] =
   })
   return favourites
 }
+
