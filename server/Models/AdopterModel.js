@@ -69,7 +69,8 @@ const adopterSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  favouritesList: Array
 })
 
 const adopter = mongoose.model('adopter', adopterSchema);

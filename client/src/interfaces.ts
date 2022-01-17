@@ -32,9 +32,10 @@ export interface Adopter {
   maxAlone: number,
   firstName: string,
   lastName: string,
-  phone: string
-  email: string
-  password: string
+  phone: string,
+  email: string,
+  password: string,
+  favouritesList?: string[]
 }
 
 export interface IUserContext {

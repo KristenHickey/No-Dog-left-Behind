@@ -126,3 +126,12 @@ export const filterMatches = (user: Adopter, allDogs: Dog[]): Dog[] => {
   })
   return matches
 };
+
+export const filterFavourites = (dogs: Dog[], favouritesList: string[]): Dog[] => {
+  const favourites: Dog[] = dogs.filter(dog => {
+    if (favouritesList.includes(dog._id)) {
+      return dog
+    }
+  })
+  return favourites
+}

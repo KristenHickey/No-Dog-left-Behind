@@ -12,8 +12,7 @@ import { filterMatches } from '../helpers';
 import BottomMenu from '../BottomMenu';
 
 function Preview() {
-  //const { userId } = useContext(UserContext);
-  // const userId = '61e1b91b9761846886f8ec6a';
+  const { userId } = useContext(UserContext);
   const [allDogs, setallDogs] = useState<Dog[]>([]);
   const [adopter, setAdopter] = useState<Adopter | null>(null);
   const [currentDog, setCurrentDog] = useState<string | null>(null)
@@ -23,14 +22,14 @@ function Preview() {
     APIservice.getAllDogs()
       //always handle errors
       .then(data => setallDogs(data))
-    APIservice.getAdopter("61e2f1aef7d13b4900fc7857")
-      .then(data => setAdopter(data))
+    // APIservice.getAdopter("61e321408e19959701a95cd4")
+    //   .then(data => setAdopter(data))
   }, [])
 
-  // useEffect(() => {
-  //   if (userId) APIservice.getAdopter(userId)
-  //     .then(data => setAdopter(data))
-  // }, [userId]);
+  useEffect(() => {
+    if (userId) APIservice.getAdopter(userId)
+      .then(data => setAdopter(data))
+  }, [userId]);
 
   const hasDogs = allDogs.length > 0;
   console.log(allDogs)
@@ -41,7 +40,7 @@ function Preview() {
         <div>
           < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
           <div className="buttonDivPreview">
-            <button onClick={() => console.log(currentDog)}>Add to shortlist</button>
+            <button onClick={() => (currentDog && userId) && APIservice.addToFavourites(userId, currentDog)}>Add to shortlist</button>
             <button>Remove match</button>
           </div>
 

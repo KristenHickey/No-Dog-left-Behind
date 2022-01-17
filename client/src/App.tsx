@@ -9,6 +9,7 @@ import ProfilePage from './adopter/ProfilePage';
 
 import BottomMenu from './BottomMenu';
 import Banner from './Decorational/Banner';
+import FavouritesPage from './Dogs/FavouritesPage';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/dogs/" element={<Preview />} />
           <Route path="/dog/:id" element={<DogProfile />} />
           <Route path="/profile/:id" element={<ProfilePage />}></Route>
+          <Route path="/favourites" element={<FavouritesPage />} />
         </Routes>
         <BottomMenu />
       </UserProvider>

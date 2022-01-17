@@ -32,6 +32,10 @@ const getAdopter = (id: string | null): Promise<Adopter> => {
   return fetchRequest(`adopterInfo/${id}`)
 }
 
+const getFavourtiesList = (id: string | null) => {
+  return fetchRequest(`adopterFavouritesList/${id}`)
+}
+
 const updateAdopterInfo = (id: string, body: object): Promise<Adopter> => {
   return fetchRequest(`updateAdopterDetails/${id}`, {
     method: 'PUT',
@@ -40,5 +44,22 @@ const updateAdopterInfo = (id: string, body: object): Promise<Adopter> => {
   })
 }
 
+const addToFavourites = (userId: string, dogId: string) => {
+  return fetchRequest(`addToFavourites/${userId}`, {
+    method: 'PUT',
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify({ dogId: dogId })
+  })
 
-export default { post, getAllDogs, getAdopter, getOneDog, updateAdopterInfo };
+}
+
+const removeFromFavourites = (userId: string, dogId: string) => {
+  return fetchRequest(`removeFromFavourites/${userId}`, {
+    method: 'PUT',
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify({ dogId: dogId })
+  })
+}
+
+
+export default { post, getAllDogs, getAdopter, getOneDog, updateAdopterInfo, getFavourtiesList, addToFavourites, removeFromFavourites };

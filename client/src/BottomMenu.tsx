@@ -24,7 +24,7 @@ function BottomMenu() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Favourites" icon={<FavoriteIcon />} component={Link} to={`/`} />
+          <BottomNavigationAction label="Favourites" icon={<FavoriteIcon />} component={Link} to={`/favourites`} />
           <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to={'/dogs'} />
           <BottomNavigationAction label="Profile" icon={<PersonIcon />} component={Link} to={`/profile/${userId}`} />
         </BottomNavigation>

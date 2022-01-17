@@ -12,7 +12,11 @@ router.get('/dog/:id', dogControllers.getOneDog)
 //adopters
 router.post('/createAdopter', adopterControllers.create)
 router.get('/adopterinfo/:id', adopterControllers.getAdopterInfo)
+router.get('/adopterFavouritesList/:id', adopterControllers.getFavList)
 router.put('/updateAdopterDetails/:id', adopterControllers.updateAdopterDetails)
+router.put('/addToFavourites/:id', adopterControllers.addToFavourites)
+router.put('/removeFromFavourites/:id', adopterControllers.removeFromFavourites)
+
 //orgs
 
 

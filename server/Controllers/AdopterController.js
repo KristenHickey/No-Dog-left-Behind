@@ -1,3 +1,4 @@
+const { findById } = require('../Models/AdopterModel');
 const adopter = require('../Models/AdopterModel');
 
 async function create(req, res) {
@@ -35,8 +36,50 @@ async function updateAdopterDetails(req, res) {
     res.status(200)
     res.send(user)
   } catch (error) {
-
+    res.status(500)
+    res.send(error)
   }
 }
 
-module.exports = { create, getAdopterInfo, updateAdopterDetails }
+async function getFavList(req, res) {
+  try {
+    const { id } = req.params;
+    const user = await adopter.findById(id)
+    res.status(200)
+    res.send(user.favouritesList)
+  } catch (error) {
+    res.status(500)
+    res.send(error)
+  }
+}
+
+async function addToFavourites(req, res) {
+  try {
+    const { id } = req.params;
+    const { dogId } = req.body
+    const user = await adopter.updateOne({ _id: id },
+      { $push: { favouritesList: dogId } })
+    res.status(200)
+    res.send(user)
+  } catch (error) {
+    res.status(500)
+    res.send(error)
+  }
+}
+
+async function removeFromFavourites(req, res) {
+  try {
+    const { id } = req.params;
+    const { dogId } = req.body
+    const user = await adopter.updateOne({ _id: id },
+      { $pull: { favouritesList: dogId } })
+    res.status(200)
+    res.send(user)
+  } catch (error) {
+
+    res.status(500)
+    res.send(error)
+  }
+}
+
+module.exports = { create, getAdopterInfo, updateAdopterDetails, getFavList, addToFavourites, removeFromFavourites }
