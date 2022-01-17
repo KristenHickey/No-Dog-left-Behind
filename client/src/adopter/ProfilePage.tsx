@@ -6,14 +6,12 @@ import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider';
 import { Adopter } from '../interfaces';
 import { breeds } from '../dogBreeds';
-import Banner from '../Decorational/Banner';
-import BottomMenu from '../BottomMenu';
 
 // type ProfilePage = {}
 
 function ProfilePage() {
-  //const { userId } = useContext(UserContext);
-  const userId = '61e2f1aef7d13b4900fc7857';
+  const { userId } = useContext(UserContext);
+
   const [user, setUser] = useState<Adopter | null>(null)
   const breedOptions: JSX.Element[] = [];
   for (let i = 0; i < breeds.length; i++) {
@@ -21,7 +19,6 @@ function ProfilePage() {
   }
 
   const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
-    console.log(e)
     if (user) {
       APIservice.updateAdopterInfo(user._id, e)
         .then(data => setUser(data))
@@ -36,7 +33,6 @@ function ProfilePage() {
   return (
     user &&
     <div>
-      {/* <Banner /> */}
       <div className="formContainer">
         <h4>Personal Details</h4>
         <Form onFinish={onFinish} initialValues={user} >
@@ -162,7 +158,7 @@ medical?" name="specialNeeds">
           <Button type="primary" htmlType="submit">Update Adoption Preferences</Button>
         </Form>
       </div>
-      {/* <BottomMenu /> */}
+
     </div>
   )
 }

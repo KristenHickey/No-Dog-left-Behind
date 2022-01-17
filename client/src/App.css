@@ -1,5 +1,7 @@
 .pageContainer{
   margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding: 0vw 4vw;
 }
 
 #bottomMenu{
@@ -9,3 +11,5 @@ position: fixed;
 bottom: 0%;
 background-color: rgb(235, 235, 235);
 }
+
+

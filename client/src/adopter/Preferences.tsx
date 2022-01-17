@@ -15,7 +15,7 @@ function Preferences() {
 
   return (
     <div >
-      <Form.Item label="Gender preference" name="genderPref" >
+      <Form.Item label={<label>Gender Preference</label>} name="genderPref"  >
         <Radio.Group >
           <Radio.Button value="none">I dont Mind!</Radio.Button>
           <Radio.Button value="Female">Female</Radio.Button>
@@ -23,7 +23,7 @@ function Preferences() {
         </Radio.Group>
       </Form.Item>
 
-      <Form.Item label="Age preference" name="agePref">
+      <Form.Item label={<label>Age preference</label>} name="agePref">
         <Select
           mode="multiple"
           style={{ width: '100%' }}
@@ -37,7 +37,7 @@ function Preferences() {
         </Select>
       </Form.Item>
 
-      <Form.Item label="Size preference" name="sizePref">
+      <Form.Item label={<label>Size preference</label>} name="sizePref">
         <Select
           mode="multiple"
           style={{ width: '100%' }}
@@ -48,7 +48,7 @@ function Preferences() {
           <Select.Option key="large">Large</Select.Option>
         </Select>
       </Form.Item>
-      <Form.Item label="Breed preference" name="breedPref">
+      <Form.Item label={<label>Breed preference</label>} name="breedPref">
         <Select
           mode="multiple"
           style={{ width: '100%' }}
@@ -58,7 +58,7 @@ function Preferences() {
         </Select>
       </Form.Item>
 
-      <Form.Item label="Size of private outdoor space" name="outdoorSpace">
+      <Form.Item label={<label>Size of private outdoor space</label>} name="outdoorSpace">
         <Radio.Group  >
           <Radio.Button value="none">None</Radio.Button>
           <Radio.Button value="small">Small</Radio.Button>
@@ -67,7 +67,7 @@ function Preferences() {
         </Radio.Group>
       </Form.Item>
 
-      <Form.Item label="Are there any other dogs in the household" name="dogs">
+      <Form.Item label={<label>Are there any other dogs in the household</label>} name="dogs">
         <Radio.Group  >
           <Radio.Button value={true}>Yes</Radio.Button>
           <Radio.Button value={false}>No</Radio.Button>

@@ -23,7 +23,7 @@ function App() {
           <Route path="/createAccount" element={<AdopterForm />} />
           <Route path="/home/" element={<Preview />} />
           <Route path="/dog/:id" element={<DogProfile />} />
-          <Route path="/profile/:id" element={<ProfilePage />}></Route>
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/favourites" element={<FavouritesPage />} />
         </Routes>
         <BottomMenu />

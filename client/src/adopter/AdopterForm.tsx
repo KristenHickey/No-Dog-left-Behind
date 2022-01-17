@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import './Forms.css';
-import Banner from '../Decorational/Banner';
 import { Form, Button } from 'antd';
 import 'antd/dist/antd.css';
 import Profile from './Profile';
 import Preferences from './Preferences';
 import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider'
+import { FlashOff } from '@material-ui/icons';
 
 
 function AdopterForm() {
@@ -22,12 +22,15 @@ function AdopterForm() {
 
   return (
     <div className="pageContainer">
-      {/* <Banner></Banner> */}
       <div className="formContainer">
-        <Form onFinish={onFinish}>
+        <Form onFinish={onFinish} style={{ color: "red" }}>
           <Profile />
           <Preferences />
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <div className='loginbutton'>
+            <Form.Item  >
+              <Button type="primary" htmlType="submit">Submit</Button>
+            </Form.Item>
+          </div>
         </Form>
       </div>
     </div >

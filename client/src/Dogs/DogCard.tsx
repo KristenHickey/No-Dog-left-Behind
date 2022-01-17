@@ -20,7 +20,7 @@ const DogCard: React.FC<DogCardProps> = ({ dogs, setCurrent }) => {
 
   useEffect(() => {
     setCurrent(dogs[0]._id)
-  }, [])
+  }, [dogs])
 
 
   return (

@@ -1,10 +1,4 @@
 
-.formContainer{
-  height: 100vh;
-  padding: 0vw 4vw;
-  margin-top: 12vh
-}
-
 button{
   background-color: #FBA642;
   color: white;
@@ -17,5 +11,16 @@ button{
 
 .adoptionForm{
   margin-top: 5vh;
+
 }
 
+.pageContainer{
+  margin-top: 10vh;
+  padding: 0vw 4vw;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+
+}

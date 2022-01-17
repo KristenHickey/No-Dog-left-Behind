@@ -7,7 +7,7 @@ import "swiper/less/effect-creative"
 import SwiperCore, { EffectCreative } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
-import Banner from '../Decorational/Banner';
+
 
 SwiperCore.use([EffectCreative]);
 
@@ -28,7 +28,7 @@ const DogProfile: React.FC = () => {
     <div >
       {dog ?
         <div className="pageContainer">
-          <Banner />
+
           <Swiper loop={dog.imgs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
             "prev": {
               "shadow": false,

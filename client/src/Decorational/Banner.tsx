@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../Context/UserProvider';
 import './Decorational.css';
-import { Link } from "react-router-dom"
+
 
 
 function Banner() {
+  const { userId } = useContext(UserContext);
+
   return (
     <div id="banner">
-      <span>No Dog Left Behind</span>
-    </div>
+      < span > No Dog Left Behind</span >
+    </div >
   )
 }
 

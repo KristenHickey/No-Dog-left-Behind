@@ -6,10 +6,10 @@ import DogCard from './DogCard';
 import { Dog, Adopter } from '../interfaces';
 import "swiper/css";
 import "swiper/css/effect-creative"
-import Banner from '../Decorational/Banner';
+
 import { UserContext } from '../Context/UserProvider'
 import { filterMatches } from '../helpers';
-import BottomMenu from '../BottomMenu';
+
 
 function Preview() {
   const { userId } = useContext(UserContext);
@@ -46,7 +46,7 @@ function Preview() {
   console.log(allDogs)
   return (
     <div className="pageContainer">
-      {/* <Banner /> */}
+
       {hasDogs && adopter ?
         <div>
           < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
@@ -58,7 +58,7 @@ function Preview() {
         </div>
         : <h1>Fetching matches</h1>
       }
-      {/* <BottomMenu /> */}
+
     </div>
   )
 }

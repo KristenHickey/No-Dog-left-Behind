@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import BottomMenu from './BottomMenu';
-import Banner from './Decorational/Banner';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Banner /> */}
+
     <App />
-    {/* <BottomMenu /> */}
+
   </React.StrictMode>,
   document.getElementById('root')
 );
