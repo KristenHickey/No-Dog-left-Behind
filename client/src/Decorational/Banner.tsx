@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../Context/UserProvider';
-import './Decorational.css';
+import './Decorational.less';
 
 
 

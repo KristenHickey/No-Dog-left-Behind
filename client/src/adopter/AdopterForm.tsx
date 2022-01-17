@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
-import './Forms.css';
+import './Forms.less';
 import { Form, Button } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import Profile from './Profile';
 import Preferences from './Preferences';
 import APIservice from '../APIservice';
@@ -17,13 +17,13 @@ function AdopterForm() {
   const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
     APIservice.post('createAdopter', e)
       .then(data => login(data.id))
-    navigate('/home')
+      .then(() => navigate('/home'))
   }
 
   return (
     <div className="pageContainer">
       <div className="formContainer">
-        <Form onFinish={onFinish} style={{ color: "red" }}>
+        <Form onFinish={onFinish} >
           <Profile />
           <Preferences />
           <div className='loginbutton'>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './Forms.css';
+import './Forms.less';
 import { Button, Form, Input, Radio, Select, Slider } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider';
 import { Adopter } from '../interfaces';
@@ -33,7 +33,7 @@ function ProfilePage() {
   return (
     user &&
     <div>
-      <div className="formContainer">
+      <div className="pageContainer">
         <h4>Personal Details</h4>
         <Form onFinish={onFinish} initialValues={user} >
           <Form.Item name="firstName" >
@@ -53,10 +53,10 @@ function ProfilePage() {
         <h4 className="adoptionForm">Adoption Preferences</h4>
         <Form className="adoptionForm" onFinish={onFinish} initialValues={user}>
           <Form.Item label="Gender preference" name="genderPref" >
-            <Radio.Group >
-              <Radio.Button value="none">I dont Mind!</Radio.Button>
-              <Radio.Button value="Female">Female</Radio.Button>
-              <Radio.Button value="male">Male</Radio.Button>
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button style={{ zIndex: -1 }} value="none">I dont Mind!</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="Female">Female</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="male">Male</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
@@ -99,56 +99,56 @@ function ProfilePage() {
           </Form.Item>
 
           <Form.Item label="Size of private outdoor space" name="outdoorSpace">
-            <Radio.Group >
-              <Radio.Button value="none">None</Radio.Button>
-              <Radio.Button value="small">Small</Radio.Button>
-              <Radio.Button value="medium">Medium</Radio.Button>
-              <Radio.Button value="large">Large</Radio.Button>
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button style={{ zIndex: -1 }} value="none">None</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="small">Small</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="medium">Medium</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="large">Large</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
           <Form.Item label="Are there any other dogs in the household" name="dogs">
-            <Radio.Group >
-              <Radio.Button value={true}>Yes</Radio.Button>
-              <Radio.Button value={false}>No</Radio.Button>
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button style={{ zIndex: -1 }} value={true}>Yes</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value={false}>No</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
           <Form.Item label="Are there any cats in the household" name="cats" >
-            <Radio.Group >
-              <Radio.Button value={true}>Yes</Radio.Button>
-              <Radio.Button value={false}>No</Radio.Button>
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button style={{ zIndex: -1 }} value={true}>Yes</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value={false}>No</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
           <Form.Item label="Are there any small animals in the household" name="smallAnimals">
-            <Radio.Group >
-              <Radio.Button value={true}>Yes</Radio.Button>
-              <Radio.Button value={false}>No</Radio.Button>
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button style={{ zIndex: -1 }} value={true}>Yes</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value={false}>No</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
           <Form.Item label="Are there any children in the household" name="children">
-            <Radio.Group >
-              <Radio.Button value="true">Yes (under 12)</Radio.Button>
-              <Radio.Button value="12+">Yes (over 12)</Radio.Button>
-              <Radio.Button value="false">No</Radio.Button>
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button style={{ zIndex: -1 }} value="true">Yes (under 12)</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="12+">Yes (over 12)</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="false">No</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
           <Form.Item label="How often will you be able to take the dog for exercise?" name="exercise">
-            <Radio.Group  >
-              <Radio.Button value="daily">Daily</Radio.Button>
-              <Radio.Button value="weekly">Weekly</Radio.Button>
-              <Radio.Button value="none">Less than weekly</Radio.Button>
+            <Radio.Group buttonStyle="solid" >
+              <Radio.Button style={{ zIndex: -1 }} value="daily">Daily</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="weekly">Weekly</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value="none">Less than weekly</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
           <Form.Item label="Willing to accomodate special needs e.g. behavioural or
 medical?" name="specialNeeds">
-            <Radio.Group >
-              <Radio.Button value={true}>Yes</Radio.Button>
-              <Radio.Button value={false}>No</Radio.Button>
+            <Radio.Group buttonStyle="solid" >
+              <Radio.Button style={{ zIndex: -1 }} value={true}>Yes</Radio.Button>
+              <Radio.Button style={{ zIndex: -1 }} value={false}>No</Radio.Button>
             </Radio.Group>
           </Form.Item>
 
@@ -157,9 +157,10 @@ medical?" name="specialNeeds">
           </Form.Item>
           <Button type="primary" htmlType="submit">Update Adoption Preferences</Button>
         </Form>
+        <div className='bottomSpace'></div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

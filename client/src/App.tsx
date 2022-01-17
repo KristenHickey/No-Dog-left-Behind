@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.less';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AdopterForm from './adopter/AdopterForm';
 import Preview from './Dogs/Preview'

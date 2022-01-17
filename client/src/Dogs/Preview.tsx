@@ -1,21 +1,35 @@
 import React, { useContext } from 'react';
 import APIservice from '../APIservice';
 import { useState, useEffect } from 'react';
-import './dogs.css'
+import './dogs.less'
 import DogCard from './DogCard';
 import { Dog, Adopter } from '../interfaces';
 import "swiper/css";
 import "swiper/css/effect-creative"
-
 import { UserContext } from '../Context/UserProvider'
 import { filterMatches } from '../helpers';
+import Lottie from 'react-lottie';
+import animationData from '../Animations/lf30_editor_gkntsx9y.json'
 
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice"
+  }
+};
 
 function Preview() {
   const { userId } = useContext(UserContext);
   const [allDogs, setallDogs] = useState<Dog[]>([]);
   const [adopter, setAdopter] = useState<Adopter | null>(null);
   const [currentDog, setCurrentDog] = useState<string | null>(null)
+  const [ready, setReady] = useState(false)
+
+  const isReady = () => {
+    setTimeout(() => setReady(true), 3000)
+  }
 
   const addFav = (userId: string, dogId: string): void => {
     if (currentDog && userId) {
@@ -40,14 +54,15 @@ function Preview() {
   useEffect(() => {
     if (userId) APIservice.getAdopter(userId)
       .then(data => setAdopter(data))
+    isReady()
   }, [userId]);
 
   const hasDogs = allDogs.length > 0;
-  console.log(allDogs)
+
   return (
     <div className="pageContainer">
 
-      {hasDogs && adopter ?
+      {hasDogs && adopter && ready ?
         <div>
           < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
           <div className="buttonDivPreview">
@@ -56,7 +71,11 @@ function Preview() {
           </div>
 
         </div>
-        : <h1>Fetching matches</h1>
+        : <Lottie
+          options={defaultOptions}
+          height={300}
+          width={300}
+        />
       }
 
     </div>

@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider';
 import { useNavigate } from 'react-router-dom';
-import './login.css'
+import './login.less'
 
 function LoginForm() {
   const { login } = useContext(UserContext)

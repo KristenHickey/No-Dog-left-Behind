@@ -1,7 +1,7 @@
 import React from 'react';
-import './Forms.css';
+import './Forms.less';
 import { Form, Input } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 
 function Profile() {
 

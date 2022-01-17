@@ -1,8 +1,8 @@
 import React from 'react';
-import './Forms.css';
+import './Forms.less';
 import { Form, Radio, Select, Slider } from 'antd';
 import { breeds } from '../dogBreeds';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 
 
 
@@ -16,7 +16,7 @@ function Preferences() {
   return (
     <div >
       <Form.Item label={<label>Gender Preference</label>} name="genderPref"  >
-        <Radio.Group >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value="none">I dont Mind!</Radio.Button>
           <Radio.Button value="Female">Female</Radio.Button>
           <Radio.Button value="male">Male</Radio.Button>
@@ -59,7 +59,7 @@ function Preferences() {
       </Form.Item>
 
       <Form.Item label={<label>Size of private outdoor space</label>} name="outdoorSpace">
-        <Radio.Group  >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value="none">None</Radio.Button>
           <Radio.Button value="small">Small</Radio.Button>
           <Radio.Button value="medium">Medium</Radio.Button>
@@ -68,28 +68,28 @@ function Preferences() {
       </Form.Item>
 
       <Form.Item label={<label>Are there any other dogs in the household</label>} name="dogs">
-        <Radio.Group  >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value={true}>Yes</Radio.Button>
           <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item label="Are there any cats in the household" name="cats" >
-        <Radio.Group >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value={true}>Yes</Radio.Button>
           <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item label="Are there any small animals in the household" name="smallAnimals">
-        <Radio.Group  >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value={true}>Yes</Radio.Button>
           <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item label="Are there any children in the household" name="children">
-        <Radio.Group  >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value="true">Yes (under 12)</Radio.Button>
           <Radio.Button value="12+">Yes (over 12)</Radio.Button>
           <Radio.Button value="false">No</Radio.Button>
@@ -97,7 +97,7 @@ function Preferences() {
       </Form.Item>
 
       <Form.Item label="How often will you be able to take the dog for exercise?" name="exercise">
-        <Radio.Group  >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value="daily">Daily</Radio.Button>
           <Radio.Button value="weekly">Weekly</Radio.Button>
           <Radio.Button value="none">Less than weekly</Radio.Button>
@@ -106,7 +106,7 @@ function Preferences() {
 
       <Form.Item label="Willing to accomodate special needs e.g. behavioural or
 medical?" name="specialNeeds">
-        <Radio.Group  >
+        <Radio.Group buttonStyle="solid">
           <Radio.Button value={true}>Yes</Radio.Button>
           <Radio.Button value={false}>No</Radio.Button>
         </Radio.Group>
