@@ -33,8 +33,9 @@ function ProfilePage() {
   return (
     user &&
     <div>
-      <div className="pageContainer">
-        <h4>Personal Details</h4>
+      <div className="pageContainer allowScroll" >
+
+        <h4 className='ProfileLabels'>Personal Details</h4>
         <Form onFinish={onFinish} initialValues={user} >
           <Form.Item name="firstName" >
             <Input placeholder="First name"  ></Input>
@@ -50,7 +51,7 @@ function ProfilePage() {
           </Form.Item>
           <Button type="primary" htmlType="submit">Update Personal Details</Button>
         </Form>
-        <h4 className="adoptionForm">Adoption Preferences</h4>
+        <h4 className='ProfileLabelsAdoption'>Adoption Preferences</h4>
         <Form className="adoptionForm" onFinish={onFinish} initialValues={user}>
           <Form.Item label="Gender preference" name="genderPref" >
             <Radio.Group buttonStyle="solid">

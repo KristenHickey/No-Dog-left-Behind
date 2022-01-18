@@ -21,7 +21,7 @@ function AdopterForm() {
   }
 
   return (
-    <div className="pageContainer">
+    <div className="pageContainer allowScroll">
       <div className="formContainer">
         <Form onFinish={onFinish} >
           <Profile />

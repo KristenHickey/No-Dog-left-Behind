@@ -1,26 +1,19 @@
 import React, { useContext } from 'react';
-import APIservice from '../APIservice';
 import { useState, useEffect } from 'react';
-import './dogs.less'
-import DogCard from './DogCard';
+import { UserContext } from '../Context/UserProvider'
+import { filterMatches, useLockBodyScroll } from '../helpers';
 import { Dog, Adopter } from '../interfaces';
+import APIservice from '../APIservice';
+import DogCard from './DogCard';
+import LottieDog from '../Common/Lottie';
+import './dogs.less'
+import '../App.less'
 import "swiper/css";
 import "swiper/css/effect-creative"
-import { UserContext } from '../Context/UserProvider'
-import { filterMatches } from '../helpers';
-import Lottie from 'react-lottie';
-import animationData from '../Animations/lf30_editor_gkntsx9y.json'
 
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData,
-  rendererSettings: {
-    preserveAspectRatio: "xMidYMid slice"
-  }
-};
 
 function Preview() {
+  //useLockBodyScroll()
   const { userId } = useContext(UserContext);
   const [allDogs, setallDogs] = useState<Dog[]>([]);
   const [adopter, setAdopter] = useState<Adopter | null>(null);
@@ -57,29 +50,35 @@ function Preview() {
     isReady()
   }, [userId]);
 
-  const hasDogs = allDogs.length > 0;
+  const hasDogs = adopter && filterMatches(adopter, allDogs).length > 0;
 
   return (
     <div className="pageContainer">
+      {hasDogs && adopter ?
+        ready ?
+          <div>
+            < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
+            <div className="buttonDivPreview">
+              <button onClick={() => { (currentDog && userId) && addFav(userId, currentDog) }}>Add to shortlist</button>
+              <button onClick={() => { (currentDog && userId) && removeMatch(userId, currentDog) }}>Remove match</button>
+            </div>
 
-      {hasDogs && adopter && ready ?
-        <div>
-          < DogCard dogs={filterMatches(adopter, allDogs)} setCurrent={setCurrentDog} />
-          <div className="buttonDivPreview">
-            <button onClick={() => { (currentDog && userId) && addFav(userId, currentDog) }}>Add to shortlist</button>
-            <button onClick={() => { (currentDog && userId) && removeMatch(userId, currentDog) }}>Remove match</button>
           </div>
-
-        </div>
-        : <Lottie
-          options={defaultOptions}
-          height={300}
-          width={300}
-        />
+          :
+          <LottieDog />
+        :
+        ready ?
+          <div>
+            <h2>No new matches found! </h2>
+            <h3>Please check back later or update your adoption preferences</h3>
+          </div> :
+          <LottieDog />
       }
 
-    </div>
+    </div >
   )
 }
+
+
 
 export default Preview;

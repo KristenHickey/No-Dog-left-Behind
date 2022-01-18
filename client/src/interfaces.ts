@@ -42,4 +42,5 @@ export interface Adopter {
 export interface IUserContext {
   userId: string | null;
   login: (newUser: string) => void;
+  logout: () => void;
 }

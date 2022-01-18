@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react"
 import APIservice from "./APIservice"
 import { Adopter, Dog } from "./interfaces"
 
@@ -144,5 +145,13 @@ export const filterFavourites = (dogs: Dog[], favouritesList: string[]): Dog[] =
     }
   })
   return favourites
+}
+
+export const useLockBodyScroll = (): void => {
+  useLayoutEffect((): () => void => {
+    const originalStyle: string = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = originalStyle);
+  }, []);
 }
 

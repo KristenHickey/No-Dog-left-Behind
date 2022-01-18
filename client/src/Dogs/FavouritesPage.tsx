@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import APIservice from '../APIservice'
 import { UserContext } from '../Context/UserProvider';
 import { Dog } from '../interfaces'
-import { filterFavourites } from '../helpers'
+import { filterFavourites, useLockBodyScroll } from '../helpers'
 import DogCard from './DogCard';
 
 function FavouritesPage() {
+  //useLockBodyScroll()
   const { userId } = useContext(UserContext);
   const [allDogs, setAllDogs] = useState<Dog[]>([])
   const [favouritesList, setFavouritesList] = useState<string[]>([])
@@ -33,10 +34,9 @@ function FavouritesPage() {
       {hasDogs && hasFavouritesList ?
         <div>
           < DogCard dogs={filterFavourites(allDogs, favouritesList)} setCurrent={setCurrentDog} />
-          <div className="buttonDivPreview">
+          <div className="buttonDivFav">
             <button onClick={() => (userId && currentDog) && removeFav(userId, currentDog)}>Remove from your favourites</button>
           </div>
-
         </div>
         : <h1>Fetching matches</h1>
       }
