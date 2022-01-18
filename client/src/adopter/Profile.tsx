@@ -7,19 +7,19 @@ function Profile() {
 
   return (
     <div >
-      <Form.Item name="firstName" >
+      <Form.Item label="First name" name="firstName" >
         <Input placeholder="First name" ></Input>
       </Form.Item>
-      <Form.Item name="lastName">
+      <Form.Item label="Last name" name="lastName">
         <Input placeholder="Last name"></Input>
       </Form.Item>
-      <Form.Item name="phone">
+      <Form.Item label="Phone number" name="phone">
         <Input placeholder="Phone number"></Input>
       </Form.Item>
-      <Form.Item name="email">
+      <Form.Item label="Email" name="email">
         <Input placeholder="Email"></Input>
       </Form.Item>
-      <Form.Item name="password">
+      <Form.Item label="Password" name="password">
         <Input.Password placeholder="Password"></Input.Password>
       </Form.Item>
     </div>

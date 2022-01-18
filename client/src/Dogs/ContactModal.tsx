@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'antd';
-import Column from 'antd/lib/table/Column';
 
 
 type ContactModal = {

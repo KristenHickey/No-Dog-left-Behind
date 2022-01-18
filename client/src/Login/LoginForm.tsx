@@ -36,6 +36,7 @@ function LoginForm() {
       <div className='loginform'>
 
         <Form.Item
+          label="First name"
           name="email"
           rules={[{ required: true, message: 'Please input your email!' }]}
         >
@@ -43,6 +44,7 @@ function LoginForm() {
         </Form.Item>
 
         <Form.Item
+          label="Password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
