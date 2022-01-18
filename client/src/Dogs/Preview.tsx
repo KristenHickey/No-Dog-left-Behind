@@ -21,7 +21,7 @@ function Preview() {
   const [ready, setReady] = useState(false)
 
   const isReady = () => {
-    setTimeout(() => setReady(true), 3000)
+    setTimeout(() => setReady(true), 2000)
   }
 
   const addFav = (userId: string, dogId: string): void => {

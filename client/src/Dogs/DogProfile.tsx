@@ -7,6 +7,8 @@ import "swiper/less/effect-creative"
 import SwiperCore, { EffectCreative } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Button, Modal } from 'antd';
+import ContactModal from './ContactModal';
 
 
 SwiperCore.use([EffectCreative]);
@@ -16,18 +18,29 @@ SwiperCore.use([EffectCreative]);
 const DogProfile: React.FC = () => {
   const { id } = useParams();
   const [dog, setDog] = useState<Dog | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
+  const showModal = (): void => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = (): void => {
+    setIsModalVisible(false);
+  };
+
 
   useEffect(() => {
     if (id) {
       APIservice.getOneDog(id)
         .then(data => setDog(data))
     }
+    console.log(window.location)
   }, [id])
 
   return (
     <div >
       {dog ?
-        <div className="pageContainer">
+        <div className="pageContainer allowScroll">
 
           <Swiper loop={dog.imgs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
             "prev": {
@@ -64,9 +77,10 @@ const DogProfile: React.FC = () => {
             {dog.exercise === "none" ? <p> I don't need to be exercised and am happy to just chill at home</p> : <p>I will need to be exercised <span className="dogDetails">{dog.exercise}</span></p>}
             {dog.specialNeeds === "false" ? <p> I <span className="dogDetails">don't </span>have any special needs</p> : <p>I have some special needs that include <span className="dogDetails">{dog.specialNeeds}</span></p>}
             {dog.maxAlone < 4 ? <p> I will <span className="dogDetails">struggle being left home alone</span></p> : <p>I am happy to be home alone for up to <span className="dogDetails">{dog.maxAlone} hours</span> in a day</p>}
-          </div>
-          <div className="buttonDivProfile">
-            <button>Contact my carers about me!</button>
+            <div className="buttonDivProfile">
+              <Button type="primary" onClick={showModal}>Contact my carers about me!</Button>
+              <ContactModal isModalVisible={isModalVisible} handleOk={handleOk} />
+            </div>
           </div>
         </div>
         : <h2>Fetching dog info!</h2>}

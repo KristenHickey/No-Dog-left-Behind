@@ -15,7 +15,7 @@ const DogImage: React.FC<DogImageProps> = ({ img, name, age }) => {
       {loaded
         ? < figcaption className="cardfigcaption">
           <span>{name}</span>
-          <span>{age} years</span>
+          <span>{age} {age === 1 ? "year" : "years"} old</span>
         </figcaption>
         : null}
     </figure>
