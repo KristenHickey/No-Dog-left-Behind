@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import LoginForm from './LoginForm'
 
 
-function LoginPage() {
+const LoginPage: React.FC =() => {
   const navigate = useNavigate()
+
   return (
     <div className='pageContainer login'>
       <LoginForm />

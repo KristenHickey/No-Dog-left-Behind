@@ -1,5 +1,4 @@
 import { useLayoutEffect } from "react"
-import APIservice from "./APIservice"
 import { Adopter, Dog } from "./interfaces"
 
 export const breed = (dog: string, user: string[]): boolean => {
@@ -22,8 +21,8 @@ export const age = (dog: number, user: string[]): boolean => {
   }
   if (user[-1] != '10+') {
     for (let i = 0; i < user.length; i++) {
-      const min: number = parseInt(user[i].substr(0));
-      const max: number = parseInt(user[i].substr(-1))
+      const min: number = parseInt(user[i].substring(0));
+      const max: number = parseInt(user[i].substring(-1))
       if (dog >= min && dog <= max) {
         return true
       }
@@ -118,7 +117,6 @@ export const dontShow = (dog: string, user: string[]): boolean => {
 }
 
 export const filterMatches = (user: Adopter, allDogs: Dog[]): Dog[] => {
-  console.log(user)
   const matches = allDogs.filter(dog => {
     if (breed(dog.breed, user.breedPref) &&
       gender(dog.gender, user.genderPref) &&
@@ -147,11 +145,4 @@ export const filterFavourites = (dogs: Dog[], favouritesList: string[]): Dog[] =
   return favourites
 }
 
-export const useLockBodyScroll = (): void => {
-  useLayoutEffect((): () => void => {
-    const originalStyle: string = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = originalStyle);
-  }, []);
-}
 

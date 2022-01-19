@@ -4,29 +4,28 @@ import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import './login.less'
+import { IUserContext } from '../interfaces';
+import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
 
-function LoginForm() {
-  const { login } = useContext(UserContext)
+const LoginForm:React.FC = () => {
+  const { login } = useContext<IUserContext>(UserContext)
   const navigate = useNavigate();
 
   const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
     APIservice.login(e)
       .then(data => {
-        if (data.status === 'success') {
+        if (data.status === 'success' && data.id)  {
           login(data.id)
           navigate('/home')
-        } else {
-
         }
       })
   };
 
-  const onFinishFailed = (errorInfo: any) => {
+  const onFinishFailed = (errorInfo: ValidateErrorEntity<React.FormEvent<HTMLInputElement>>) => {
     console.log('Failed:', errorInfo);
   };
 
   return (
-
     <Form
       name="login"
       onFinish={onFinish}
@@ -59,9 +58,7 @@ function LoginForm() {
         </Form.Item>
       </div>
     </Form>
-
   );
-
 }
 
 export default LoginForm

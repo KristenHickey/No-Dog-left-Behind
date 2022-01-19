@@ -11,7 +11,7 @@ const defaultOptions = {
   }
 };
 
-function LottieDog() {
+const LottieDog: React.FC = () => {
   return (
     <div className='animation'>
       <Lottie

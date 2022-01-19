@@ -6,7 +6,7 @@ import 'antd/dist/antd.less';
 
 
 
-function Preferences() {
+const Preferences: React.FC = () => {
 
   const breedOptions: JSX.Element[] = [];
   for (let i = 0; i < breeds.length; i++) {
@@ -14,8 +14,8 @@ function Preferences() {
   }
 
   return (
-    <div >
-      <Form.Item label={<label>Gender Preference</label>} name="genderPref"  >
+    <>
+      <Form.Item label={<label>Gender Preference</label>} name="genderPref">
         <Radio.Group buttonStyle="solid">
           <Radio.Button value="none">I dont Mind!</Radio.Button>
           <Radio.Button value="Female">Female</Radio.Button>
@@ -74,7 +74,7 @@ function Preferences() {
         </Radio.Group>
       </Form.Item>
 
-      <Form.Item label="Are there any cats in the household" name="cats" >
+      <Form.Item label="Are there any cats in the household" name="cats">
         <Radio.Group buttonStyle="solid">
           <Radio.Button value={true}>Yes</Radio.Button>
           <Radio.Button value={false}>No</Radio.Button>
@@ -115,7 +115,7 @@ medical?" name="specialNeeds">
       <Form.Item label="On an average day how long will the dog be left alone?" name="maxAlone">
         <Slider max={8} />
       </Form.Item>
-    </div >
+    </>
   )
 }
 

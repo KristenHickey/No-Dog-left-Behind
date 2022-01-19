@@ -8,10 +8,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import { Paper } from '@mui/material';
+import { IUserContext } from '../interfaces';
 
-function BottomMenu() {
-  const { userId } = useContext(UserContext);
-  const [value, setValue] = useState(1);
+const BottomMenu: React.FC = () => {
+  const { userId  } = useContext<IUserContext>(UserContext);
+  const [value, setValue] = useState<number>(1);
 
   return (
     <>
@@ -33,7 +34,7 @@ function BottomMenu() {
         </Box>
         : null
       }
-    </>
+    </ >
   );
 }
 

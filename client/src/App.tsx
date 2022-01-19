@@ -12,7 +12,7 @@ import FavouritesPage from './Dogs/FavouritesPage';
 import LoginPage from './Login/LoginPage';
 
 
-function App() {
+const App: React.FC =() => {
   return (
     <BrowserRouter>
       <UserProvider>

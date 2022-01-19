@@ -8,34 +8,34 @@ import SwiperCore, { EffectCreative } from 'swiper';
 import { useNavigate } from 'react-router-dom';
 import DogImage from './DogImage';
 
-
-
 SwiperCore.use([EffectCreative]);
 
 type DogCardProps = {
   dogs: Dog[];
   setCurrent: React.Dispatch<React.SetStateAction<string | null>>;
-
 }
 
 const DogCard: React.FC<DogCardProps> = ({ dogs, setCurrent }) => {
-  const [currentPage, setcurrentPage] = useState('')
+  const [currentPage, setcurrentPage] = useState<string>('')
   const navigate = useNavigate();
-
 
   useEffect(() => {
     setCurrent(dogs[0]._id)
     setcurrentPage(window.location.pathname)
-  }, [dogs])
+  }, [])
 
   return (
     <div className="pageContainer" >
-      <div>
-        {currentPage === '/home' ? <h3 className='numMatches'>You have {dogs.length} {dogs.length === 1 ? "match!" : "matches, swipe to see them!"}</h3>
-          : <h3 className='numMatches'>You have {dogs.length} {dogs.length === 1 ? "saved favourite!" : "saved favourites, swipe to see them!"}</h3>}
+      <>
+        {currentPage === '/home'
+          ? <h3 className='numMatches'>You have {dogs.length} {dogs.length === 1 ? "match!" : "matches, swipe to see them!"}</h3>
+          : <h3 className='numMatches'>You have {dogs.length} {dogs.length === 1 ? "saved favourite!" : "saved favourites, swipe to see them!"}</h3>
+        }
 
-
-        <Swiper preloadImages={true} lazy={true} onSlideChange={(swiper) => setCurrent(dogs[swiper.realIndex]._id)} loop={dogs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
+        <Swiper onSlideChange={(swiper) => { setCurrent(dogs[swiper.realIndex]._id) }} onSlidesLengthChange={(swiper) => {
+          if (dogs[swiper.realIndex]) setCurrent(dogs[swiper.realIndex]._id)
+          else setCurrent(dogs[0]._id)
+        }} loop={dogs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
           "prev": {
             "shadow": false,
             "translate": [0, 0, -400]
@@ -52,10 +52,8 @@ const DogCard: React.FC<DogCardProps> = ({ dogs, setCurrent }) => {
             )
           })}
         </Swiper>
-      </div>
-
+      </ >
     </div >
-
   )
 }
 

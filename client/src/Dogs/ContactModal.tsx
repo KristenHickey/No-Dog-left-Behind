@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Modal, Button } from 'antd';
 
 
@@ -13,7 +13,14 @@ const ContactModal: React.FC<ContactModal> = ({ isModalVisible, handleOk }) => {
 
   return (
     <>
-      <Modal centered={true} closable={false} title="Contact Information" visible={isModalVisible} onCancel={handleOk} bodyStyle={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }} footer={
+      <Modal
+        centered={true}
+        closable={false}
+        title="Contact Information"
+        visible={isModalVisible}
+        onCancel={handleOk}
+        bodyStyle={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
+        footer={
         [<div style={{ display: 'flex', justifyContent: 'center' }}>
           <Button key="back" onClick={handleOk} >
             Close

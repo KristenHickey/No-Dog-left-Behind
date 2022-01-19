@@ -4,9 +4,10 @@ import './Decorational.less';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { useNavigate } from 'react-router-dom';
+import { IUserContext } from '../interfaces';
 
-function Banner() {
-  const { userId, logout } = useContext(UserContext);
+const Banner: React.FC = () => {
+  const { userId, logout } = useContext<IUserContext>(UserContext);
   const navigate = useNavigate();
 
   return (

@@ -1,4 +1,4 @@
-export const breeds = [
+export const breeds:string[] = [
   "All",
   "Alaskan Malamute",
   "American Bulldog",

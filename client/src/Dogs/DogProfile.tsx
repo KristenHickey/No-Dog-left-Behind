@@ -5,18 +5,19 @@ import { Dog } from '../interfaces';
 import "swiper/less";
 import "swiper/less/effect-creative"
 import SwiperCore, { EffectCreative } from 'swiper';
-import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Button, Modal } from 'antd';
+import { Button } from 'antd';
 import ContactModal from './ContactModal';
-
+import LottieDog from '../Common/Lottie';
 
 SwiperCore.use([EffectCreative]);
 
-// type DogProfile = {}
+type Params = {
+id: string
+}
 
 const DogProfile: React.FC = () => {
-  const { id } = useParams();
+  const { id } = useParams<Params>();
   const [dog, setDog] = useState<Dog | null>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
@@ -34,14 +35,12 @@ const DogProfile: React.FC = () => {
       APIservice.getOneDog(id)
         .then(data => setDog(data))
     }
-    console.log(window.location)
   }, [id])
 
   return (
-    <div >
+    <>
       {dog ?
         <div className="pageContainer allowScroll">
-
           <Swiper loop={dog.imgs.length > 1 ? true : false} grabCursor={true} effect={'creative'} creativeEffect={{
             "prev": {
               "shadow": false,
@@ -83,8 +82,8 @@ const DogProfile: React.FC = () => {
             </div>
           </div>
         </div>
-        : <h2>Fetching dog info!</h2>}
-    </div>
+        : <LottieDog/>}
+    </>
   )
 }
 

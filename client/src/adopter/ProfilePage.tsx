@@ -4,16 +4,16 @@ import { Button, Form, Input, Radio, Select, Slider } from 'antd';
 import 'antd/dist/antd.less';
 import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider';
-import { Adopter } from '../interfaces';
+import { Adopter, IUserContext } from '../interfaces';
 import { breeds } from '../dogBreeds';
 
-// type ProfilePage = {}
 
-function ProfilePage() {
-  const { userId } = useContext(UserContext);
-
+const ProfilePage: React.FC = () => {
+  const { userId } = useContext<IUserContext>(UserContext);
   const [user, setUser] = useState<Adopter | null>(null)
+
   const breedOptions: JSX.Element[] = [];
+
   for (let i = 0; i < breeds.length; i++) {
     breedOptions.push(<Select.Option key={breeds[i]}>{breeds[i]}</Select.Option>);
   }
@@ -31,10 +31,9 @@ function ProfilePage() {
   }, [userId]);
 
   return (
-    user &&
-    <div>
+    user ?
+    <>
       <div className="pageContainer allowScroll" >
-
         <h4 className='ProfileLabels'>Personal Details</h4>
         <Form onFinish={onFinish} initialValues={user} >
           <Form.Item label="First name" name="firstName" >
@@ -160,8 +159,8 @@ medical?" name="specialNeeds">
         </Form>
         <div className='bottomSpace'></div>
       </div>
-
-    </div >
+      </ >
+      : null
   )
 }
 

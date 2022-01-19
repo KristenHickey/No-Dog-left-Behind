@@ -7,15 +7,14 @@ import Profile from './Profile';
 import Preferences from './Preferences';
 import APIservice from '../APIservice';
 import { UserContext } from '../Context/UserProvider'
-import { FlashOff } from '@material-ui/icons';
+import { IUserContext } from '../interfaces';
 
-
-function AdopterForm() {
-  const { login } = useContext(UserContext)
+const AdopterForm: React.FC = () => {
+  const { login } = useContext<IUserContext>(UserContext)
   const navigate = useNavigate();
 
   const onFinish = (e: React.FormEvent<HTMLInputElement>): void => {
-    APIservice.post('createAdopter', e)
+    APIservice.createAdopter('createAdopter', e)
       .then(data => login(data.id))
       .then(() => navigate('/home'))
   }
