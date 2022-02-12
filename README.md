@@ -1,6 +1,6 @@
 # No Dog Left Behind
 
-No Dog Left Beind is a web app that aims to provide a centralised dog adoption platform. Instead of spending hours scrolling through countless listings for dogs that potential adopters don't meet the adoption criteria for across mulitple adoption platforms, adopters are only shown dogs that they meet all the adoption criteria for all in one place!
+No Dog Left Behind is a web app that aims to provide a centralised dog adoption platform. Instead of spending hours scrolling through countless listings for dogs that potential adopters don't meet the adoption criteria for across multiple adoption platforms, adopters are only shown dogs that they meet all the adoption criteria for all in one place!
 
 ## Screenshots
 
