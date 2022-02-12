@@ -1,4 +1,3 @@
-const { findById, findOne } = require('../Models/AdopterModel');
 const adopter = require('../Models/AdopterModel');
 
 async function create(req, res) {

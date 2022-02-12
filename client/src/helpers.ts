@@ -1,116 +1,114 @@
-import { useLayoutEffect } from "react"
 import { Adopter, Dog } from "./interfaces"
 
-export const breed = (dog: string, user: string[]): boolean => {
-  if (user.includes('All')) {
+export const breed = (dogBreed: string, userPreference: string[]): boolean => {
+  if (userPreference.includes('All')) {
     return true
   }
-  return user.includes(dog)
+  return userPreference.includes(dogBreed)
 }
 
-export const gender = (dog: string, user: string): boolean => {
-  if (user === 'none' || dog.toLowerCase() === user.toLowerCase()) {
+export const gender = (dogGender: string, userPreference: string): boolean => {
+  if (userPreference === 'none' || dogGender.toLowerCase() === userPreference.toLowerCase()) {
     return true
   }
   return false
 }
 
-export const age = (dog: number, user: string[]): boolean => {
-  if (user.includes('none')) {
+export const age = (dogAge: number, userPreference: string[]): boolean => {
+  if (userPreference.includes('none')) {
     return true
   }
-  if (user[-1] != '10+') {
-    for (let i = 0; i < user.length; i++) {
-      const min: number = parseInt(user[i].substring(0));
-      const max: number = parseInt(user[i].substring(-1))
-      if (dog >= min && dog <= max) {
+  if (userPreference[-1] !== '10+') {
+    for (let i = 0; i < userPreference.length; i++) {
+      const min: number = parseInt(userPreference[i].substring(0));
+      const max: number = parseInt(userPreference[i].substring(-1))
+      if (dogAge >= min && dogAge <= max) {
         return true
       }
     }
   } else {
-    if (dog >= 10) {
+    if (dogAge >= 10) {
       return true
     }
   }
   return false
 }
 
-export const size = (dog: string, user: string[]): boolean => {
-  return user.includes(dog)
+export const size = (dogSize: string, userPreference: string[]): boolean => {
+  return userPreference.includes(dogSize)
 }
 
-export const exercise = (dog: string, user: string): boolean => {
+export const exercise = (dogExerciserReq: string, userPreference: string): boolean => {
 
-  if (user.toLowerCase() === dog.toLowerCase()) {
+  if (userPreference.toLowerCase() === dogExerciserReq.toLowerCase()) {
     return true
   }
-  if (dog.toLowerCase() === 'none') {
+  if (dogExerciserReq.toLowerCase() === 'none') {
     return true
   }
-  if (user.toLowerCase() === 'daily') {
+  if (userPreference.toLowerCase() === 'daily') {
     return true
   }
   return false
 }
 
-export const outdoorSpace = (dog: string, user: string): boolean => {
-  if (dog.toLowerCase() === user.toLowerCase()) {
+export const outdoorSpace = (dogOutdoorReq: string, userPreference: string): boolean => {
+  if (dogOutdoorReq.toLowerCase() === userPreference.toLowerCase()) {
     return true
   }
-  if (dog.toLowerCase() === 'small') {
+  if (dogOutdoorReq.toLowerCase() === 'small') {
     return true
   }
-  if (user.toLowerCase() === 'large') {
-    return true
-  }
-  return false
-}
-
-export const cats = (dog: boolean, user: boolean): boolean => {
-  if (user === dog || !user || dog) {
+  if (userPreference.toLowerCase() === 'large') {
     return true
   }
   return false
 }
 
-// missing logic for 12+
-export const children = (dog: string, user: string): boolean => {
-  if (user === dog || user.toLowerCase() === 'false' || dog.toLowerCase() === 'true') {
+export const cats = (dogCatReq: boolean, userPreference: boolean): boolean => {
+  if (userPreference === dogCatReq || !userPreference || dogCatReq) {
     return true
   }
   return false
 }
 
-export const onlyDog = (dog: boolean, user: boolean): boolean => {
-  if (user === dog || !user || dog) {
-    return true
-  }
-  return false
-}
-export const smallAnimals = (dog: boolean, user: boolean): boolean => {
-  if (user === dog || !user || dog) {
+export const children = (dogChildrenReq: string, userPreference: string): boolean => {
+  if (userPreference === dogChildrenReq || userPreference.toLowerCase() === 'false' || dogChildrenReq.toLowerCase() === 'true') {
     return true
   }
   return false
 }
 
-export const maxAlone = (dog: number, user: number): boolean => {
-  if (dog >= user) {
+export const onlyDog = (dogReq: boolean, userPreference: boolean): boolean => {
+  if (userPreference === dogReq || !userPreference || dogReq) {
+    return true
+  }
+  return false
+}
+export const smallAnimals = (dogSmallAnimalReq: boolean, userPreference: boolean): boolean => {
+  if (userPreference === dogSmallAnimalReq || !userPreference || dogSmallAnimalReq) {
+    return true
+  }
+  return false
+}
+
+export const maxAlone = (dogReq: number, userPreference: number): boolean => {
+  if (dogReq >= userPreference) {
     return true
   }
 
   return false
 }
 
-export const specialNeeds = (dog: string, user: boolean): boolean => {
-  if (user || (dog.toLowerCase() === "false" && !user)) {
+export const specialNeeds = (dogHasSpecNeeds: string, userPreference: boolean): boolean => {
+  if (userPreference || (dogHasSpecNeeds.toLowerCase() === "false" && !userPreference)) {
     return true
   }
   return false
 }
 
-export const dontShow = (dog: string, user: string[]): boolean => {
-  if (user.includes(dog)) {
+export const dontShow = (dogId: string, userDontShowList: string[]): boolean => {
+  if (userDontShowList.includes(dogId)) {
     return false
   }
   return true

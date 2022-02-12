@@ -11,7 +11,7 @@ const DogImage: React.FC<DogImageProps> = ({ img, name, age }) => {
 
   return (
     <figure className="img_container">
-      <img src={img} onLoad={() => setLoaded(true)} />
+      <img alt={`A dog named${name}`} src={img} onLoad={() => setLoaded(true)} />
       {loaded
         ? < figcaption className="cardfigcaption">
           <span>{name}</span>

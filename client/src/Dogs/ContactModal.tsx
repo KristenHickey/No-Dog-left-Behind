@@ -2,13 +2,13 @@ import React from 'react';
 import { Modal, Button } from 'antd';
 
 
-type ContactModal = {
+type ContactModalProps = {
   isModalVisible: boolean;
   handleOk: () => void;
 }
 
 
-const ContactModal: React.FC<ContactModal> = ({ isModalVisible, handleOk }) => {
+const ContactModal: React.FC<ContactModalProps> = ({ isModalVisible, handleOk }) => {
 
 
   return (

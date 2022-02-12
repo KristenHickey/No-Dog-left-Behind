@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const adopterSchema = new mongoose.Schema({
-  //look for enum
+
   genderPref: {
     type: String,
     required: true

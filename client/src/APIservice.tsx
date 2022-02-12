@@ -1,13 +1,14 @@
-import { LoginForm, LoginResponse, Options } from "./APITypes"
+import { LoginResponse, Options } from "./APITypes"
 import { Adopter, Dog } from "./interfaces"
 
-const base = 'http://localhost:3005/'
+const base = process.env.REACT_APP_SERVERURL!
 
 const fetchRequest = (endPoint?: string, options?: Options) => {
-  return fetch(base + endPoint, options)
+   return fetch(base + endPoint, options)
     .then(res => res.status < 400 ? res : Promise.reject())
     .then(res => res.status !== 204 ? res.json() : res)
     .catch(err => console.log('Error: ', err))
+
 }
 
 //doggos

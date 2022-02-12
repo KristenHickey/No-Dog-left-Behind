@@ -54,7 +54,7 @@ const DogProfile: React.FC = () => {
               return (
                 <SwiperSlide key={img} >
                   <figure className="img_container">
-                    <img src={img} />
+                    <img alt={`A dog named ${dog.name}` }src={img} />
                     <figcaption className="profileFigCap">
                       <span>{dog.imgs.indexOf(img) + 1}/{dog.imgs.length}</span>
                     </figcaption>
